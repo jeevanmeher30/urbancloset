@@ -25,12 +25,20 @@
       "id": "LUI8er2D25k"
     },
     {
-      "name": "Jeevan ",
+      "name": "Jeevan",
       "email": "jeevan@gmail.com",
       "phone": "1234567894",
       "address": "avbfuhvafafafafaf",
-      "password": "fafafafafafa",
+      "password": "fafafafafa",
       "id": "51xevdb2sVQ"
+    },
+    {
+      "name": "Dark Yagami",
+      "email": "darkyagami@gmail.com",
+      "phone": "9490652588",
+      "address": "kiffgdafvbjbfjbkv",
+      "password": "qwertyuiopasd",
+      "id": "oXHQY6_4-z8"
     }
   ],
   "products": [],

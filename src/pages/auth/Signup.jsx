@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -15,6 +16,8 @@ const Signup = () => {
   const phoneRegex = /^[0-9]{10}$/;
   const passwordRegex = /^[A-Za-z0-9]{8,}$/;
   const addressRegex = /^[a-zA-Z0-9\s.,]{10,}$/
+
+  const navigate = useNavigate();
 
   const API_URL = "http://localhost:5000/user";
 
@@ -84,6 +87,7 @@ const Signup = () => {
 
       console.log(postResponse.data);
       alert("Registration Successfull");
+      navigate("/login")
 
 
       setName("");

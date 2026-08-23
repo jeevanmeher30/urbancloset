@@ -1,5 +1,6 @@
-import React from 'react'
-import { useState } from 'react'
+import React from 'react';
+import { useState } from 'react';
+import axios from 'axios';
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -10,7 +11,12 @@ const Signup = () => {
   const [confirmpassword, setConfirmPassword] = useState("");
   
   const nameRegex = /^[A-Za-z ]+$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+  const phoneRegex = /^[0-9]{10}$/;
+  const passwordRegex = /^[A-Za-z0-9]{8,}$/;
+  const addressRegex = /^[a-zA-Z0-9\s.,]{10,}$/
 
+  const API_URL= "http://localhost:5000/user";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,20 +29,72 @@ const Signup = () => {
     alert("name should contain only letters");
     return;
     }
-    console.log(name);
-    console.log(email);
-    console.log(phone);
-    console.log(address);
-    console.log(password);
-    console.log(confirmpassword);
-    console.log("Form Submitted");
 
+    if(!emailRegex.test(email)){
+    alert("enter a valid email address");
+    return;
+    }
+
+    if(!phoneRegex.test(phone)){
+    alert("Phone no. must contain 10 digit");
+    return;
+    }
+
+    if(!addressRegex.test(address)){
+    alert("Address should be more than 10 characters")
+    return;
+   }
+
+    if(!passwordRegex.test(password)){
+    alert("Password must contain 8 characters");
+    return;
+    }
+
+    if(password !== confirmpassword){
+      alert("Passwords do not match");
+      return;
+    }
+
+
+    const newUser={
+      name,
+      email,
+      phone,
+      address,
+      password
+    }
+
+    axios.get(API_URL)
+      .then((response) => {
+        const emailExists = existingUsers.some(
+            (user) => user.email === email
+        );
+
+    if(emailExists){
+        alert("Email already exists , Try again")
+        return;
+      }
+
+
+    axios.post(API_URL, newUser)
+      .then((response) => {
+        console.log(response.data);
+        alert("Registration Successfull")
+      })
+
+      .catch((error) =>{
+        console.log(error)
+        alert("Registration Failed")
+      });
+    })
+
+      .catch((error) =>{
+        console.log(error)
+        alert("Could not check existing user");
+      });
     
-  
-  }
+  };
 
-
-  
 
   return (
     <div>

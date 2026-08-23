@@ -1,0 +1,15 @@
+{
+  "user": [
+    {
+      "name": "dark",
+      "email": "dark@gmail.com",
+      "phone": "1345679120",
+      "address": "wertuioplkjhgfdsa",
+      "password": "zxcvbnma",
+      "id": "DauV7bfeYpw"
+    }
+  ],
+  "products": [],
+  "orders": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}

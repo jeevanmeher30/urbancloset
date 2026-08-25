@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter, Routes, Route } from "react-router-dom";
+import {BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Nav from './Components/Nav';
 import Home from "./pages/public/Home";
 import Login from './pages/auth/Login';
@@ -7,12 +7,19 @@ import Signup from './pages/auth/Signup';
 import Adminlogin from './pages/admin/Adminlogin';
 import Shop from './pages/public/Shop';
 
-const App = () => {
+
+
+  const AppContent = () =>{
+  const location = useLocation();
+
+  const hideNav = 
+  location.pathname === "/login" || 
+  location.pathname === "/signup";
+
   return (
-    <div>
-      <BrowserRouter>
-      <Nav/>
-      <Routes>  
+    <>
+    {!hideNav && <Nav/>}
+    <Routes>  
         <Route path="/" element ={<Home/>}/>
         <Route path="/login" element ={<Login/>}/>
         <Route path="/signup" element ={<Signup/>}/>
@@ -21,6 +28,18 @@ const App = () => {
 
 
       </Routes>
+    </>
+  );
+};
+
+
+
+const App = () => {
+
+  return (
+    <div>
+      <BrowserRouter>
+      <AppContent/>
       </BrowserRouter>
     </div>
   )

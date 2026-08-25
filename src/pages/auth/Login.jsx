@@ -2,11 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -18,22 +20,22 @@ const Login = () => {
 
     try {
       const response = await axios.get(API_URL);
-      
+
       const user = response.data.find(
-        (user) => 
+        (user) =>
           user.email === email &&
           user.password === password
       );
-      if(user){
+      if (user) {
         alert("Login Successfull");
         navigate("/shop")
       }
-      else{
+      else {
         alert("Invalid email or password");
       }
     }
 
-    catch(error){
+    catch (error) {
       console.log(error)
       alert("Something went wrong")
     }
@@ -43,27 +45,70 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className='auth-page'>
+      <div className='auth-container'>
+        <div className='auth-form-section'>
+          <div className='auth-content'>
+            <div className='auth-brand'>
+              URBANCLOSET
+            </div>
 
-      <form onSubmit={handleSubmit}>
+            <h1 className='auth-title'>
+              Welcome back
+            </h1>
+            <p className='auth-subtitle'>
+              Sign in to continue shopping
+            </p>
 
-        <input type="email" 
-        placeholder='Email'
-        value={email}
-        onChange = {(e) => setEmail(e.target.value)} /> <br />
 
-        <input type="password"
-        placeholder='Password'
-        value = {password}
-        onChange={(e) => setPassword(e.target.value)} /> <br />
+            <form onSubmit={handleSubmit}>
 
-        <button type = "submit">
-          Login
-        </button>
+              <div className='input-group'>
+                <input type="email"
+                  placeholder='Email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
 
-      </form>
+              <div className='input-group'>
 
+                <div className='password-input'>
+
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder='Password'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)} />
+
+                  <button
+                    type="button"
+                    className='eye-button'
+                    onClick={() => setShowPassword(!showPassword)}>
+
+                    {showPassword ? "◉" : "◌"}
+                  </button>
+                </div>
+              </div>
+
+              <button className='auth-button' type="submit">
+                Login
+              </button>
+            </form>
+            <p className='auth-footer'>
+              Don't have an account?
+              <Link to="/signup"> Sign up</Link>
+              <br />
+              Are you admin?
+              <Link to="/admin"> Admin</Link>
+            </p>
+          </div>
+        </div>
+
+        <div className='auth-image-section'>
+          <img src="/fashion.jpg" alt="UrbanCloset fashion" />
+        </div>
+      </div>
     </div>
   )
 }

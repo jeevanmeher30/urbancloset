@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -10,6 +11,8 @@ const Signup = () => {
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const nameRegex = /^[A-Za-z ]+$/;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
@@ -107,26 +110,83 @@ const Signup = () => {
 
 
   return (
-    <div>
-      <h1>Create Account</h1>
+    <div className='auth-page'>
+      <div className='auth-container'>
+        <div className='auth-form-section'>
+          <div className='auth-content'>
+            <div className='auth-brand'>
+              URBANCLOSET
+            </div>
+            <h1 className='auth-title'>Create Account</h1>
 
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder='Name' value = {name} onChange={(e) => setName(e.target.value)} /> <br />
+            <form onSubmit={handleSubmit}>
+              <div className='input-group'>
+                <input type="text"
+                  placeholder='Name'
+                  value={name} onChange={(e) => setName(e.target.value)} />
 
-        <input type="email" placeholder='Email' value = {email} onChange={(e) => setEmail(e.target.value)} /> <br />
+                <input type="email"
+                  placeholder='Email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)} />
 
-        <input type="tel" placeholder='Phone' value = {phone} onChange={(e) => setPhone(e.target.value)} /> <br />
+                <input type="tel"
+                  placeholder='Phone'
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)} />
 
-        <input type="text" placeholder='Address' value = {address} onChange={(e) => setAddress(e.target.value)} /> <br />
+                <input type="text"
+                  placeholder='Address'
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)} />
 
-        <input type="password" placeholder='Password' value = {password} onChange={(e) => setPassword(e.target.value)} /> <br />
+                <div className='password-input'>
 
-        <input type="password" placeholder='Confirm Password' value = {confirmpassword} onChange={(e) => setConfirmPassword(e.target.value)} /> <br />
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder='Password'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)} />
 
-        <button type="submit">Create Account</button>
+                  <button
+                    type="button"
+                    className='eye-button'
+                    onClick={() => setShowPassword(!showPassword)}>
 
-      </form>
+                    {showPassword ? "◉" : "◌"}
+                  </button>
+                </div>
 
+                <div className='password-input'>
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    placeholder='Confirm Password'
+                    value={confirmpassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)} />
+                  <button
+                    type="button"
+                    className='eye-button'
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                    {showConfirmPassword ? "◉" : "◌"}
+                  </button>
+                </div>
+              </div>
+              <button className='auth-button' type="submit">Create Account</button>
+            </form>
+            <p className='auth-footer'>
+              Already have an account?
+              <Link to="/login"> Login </Link>
+              <br />
+              Are you admin?
+              <Link to="/admin"> Admin</Link>
+            </p>
+            
+          </div>
+        </div>
+        <div className="auth-image-section">
+          <img src="/Signupimg.jpg" alt="UrbanCloset fashion" />
+        </div>
+      </div>
     </div>
   )
 }

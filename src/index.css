@@ -186,3 +186,80 @@ nav a:hover{
     font-size: 18px;
     padding: 8px;
 }
+
+
+/* SHOP PAGE  */
+
+
+.shop-page{
+    padding: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.shop-title{
+    font-size: 42px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.product-grid{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap:30px;
+}
+
+.product-card{
+    background:#f7f7f5;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover{
+    transform: translateY(-8px);
+}
+
+.product-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.product-info{
+    padding: 20px;
+}
+
+.product-category{
+    font-size: 20px;
+    color: #777;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.product-info h2{
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size:18px;
+    font-weight: bold;
+}
+
+.add-cart-btn{
+    width: 100%;
+    padding: 12px;
+    margin-top: 5%;
+
+    background: black;
+    color: white;
+
+    border: none;
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+.add-cart-btn:hover{
+    opacity: 0.8;
+}

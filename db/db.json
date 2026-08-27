@@ -49,7 +49,40 @@
       "id": "pehDCbttlXY"
     }
   ],
-  "products": [],
+  "products": [
+    {
+    "id": "1",
+    "name": "Classic White T-Shirt",
+    "category": "Men",
+    "price": 799,
+    "image": "/products/white-tshirt.jpg",
+    "description": "A clean and comfortable classic white t-shirt."
+  },
+  {
+    "id": "2",
+    "name": "Oversized Black Hoodie",
+    "category": "Men",
+    "price": 1499,
+    "image": "/products/black-hoodie.jpg",
+    "description": "A relaxed oversized hoodie for everyday wear."
+  },
+  {
+    "id": "3",
+    "name": "Beige Casual Dress",
+    "category": "Women",
+    "price": 1299,
+    "image": "/products/beige-dress.jpg",
+    "description": "A simple and elegant casual dress."
+  },
+  {
+    "id": "4",
+    "name": "Blue Denim Jacket",
+    "category": "Unisex",
+    "price": 1899,
+    "image": "/products/denim-jacket.jpg",
+    "description": "A versatile denim jacket for everyday outfits."
+  }
+  ],
   "orders": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

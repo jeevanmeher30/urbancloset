@@ -6,6 +6,7 @@ import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Adminlogin from './pages/admin/Adminlogin';
 import Shop from './pages/public/Shop';
+import ProductDetails from './pages/public/ProductDetails';
 
 
 
@@ -25,8 +26,8 @@ import Shop from './pages/public/Shop';
         <Route path="/signup" element ={<Signup/>}/>
         <Route path="/admin/login" element ={<Adminlogin/>}/>
         <Route path= "/shop" element = {<Shop />}/>
-
-
+        <Route path="/product/:id" element = {<ProductDetails />}/>
+        
       </Routes>
     </>
   );

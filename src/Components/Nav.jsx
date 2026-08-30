@@ -20,7 +20,6 @@ const Nav = () => {
       <div className='nav-links'>
         <Link to="/">Home</Link>
         <Link to="/shop">Shop</Link>
-        <Link to="/about">About</Link>
       </div>
 
 

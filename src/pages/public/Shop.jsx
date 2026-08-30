@@ -1,22 +1,24 @@
 import React from 'react';
-import { useEffect,useState , useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
 
 const Shop = () => {
 
-  const { addToCart} = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
 
   // console.log(cart)
 
-  const[products,setProducts] = useState([]);
-  
+  const [products, setProducts] = useState([]);
+
+  const [search, setSearch] = useState("");
+
   const API_URL = "http://localhost:5000/products"
 
-  useEffect(() =>{
-    const fetchproducts = async () =>{
-      try{
+  useEffect(() => {
+    const fetchproducts = async () => {
+      try {
         const response = await axios.get(API_URL);
 
         setProducts(response.data)
@@ -27,45 +29,59 @@ const Shop = () => {
     fetchproducts();
   }, []);
 
+
+  const filteredProducts = products.filter((product) =>
+  product.name.toLowerCase().includes(search.toLowerCase())
+);
+
   return (
 
-    <div className='shop-page'> 
-    <h1 className='shop-title'> Shop Our Collection</h1>
-    <div className='product-grid'>
-      {products.map((product) =>(
-        <div className='product-card' key = {products.id}>
-          <Link to={`/product/${product.id}`}>
-          <div className='product-image'>
-            <img src={product.image}
-             alt={product.name} />
-          </div>
-          </Link>
+    <div className='shop-page'>
+      <h1 className='shop-title'> Shop Our Collection</h1>
+      <input
+        className='product-search'
+        type="text"
+        placeholder="Search products..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
 
-          <div className='product-info'>
-            <p className='product-category'>
-              {products.category}
-            </p>
-            <h2>{product.name}</h2>
 
-            <p className='product-price'>
-              ₹{product.price}
+      <div className='product-grid'>
+        {filteredProducts.map((product) => (
+          <div className='product-card' key={products.id}>
+            <Link to={`/product/${product.id}`}>
+              <div className='product-image'>
+                <img src={product.image}
+                  alt={product.name} />
+              </div>
+            </Link>
+
+            <div className='product-info'>
+              <p className='product-category'>
+                {products.category}
+              </p>
+              <h2>{product.name}</h2>
+
+              <p className='product-price'>
+                ₹{product.price}
               </p>
 
-            <button  className='add-cart-btn'
-            onClick={() => addToCart(product)}>
-              Add to Cart
-            </button>
+              <button className='add-cart-btn'
+                onClick={() => addToCart(product)}>
+                Add to Cart
+              </button>
+
+            </div>
 
           </div>
 
-        </div>
-
-      ))}
+        ))}
 
 
+      </div>
     </div>
-  </div>
-    
+
   )
 }
 

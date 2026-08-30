@@ -1,8 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext';
 
 const Login = () => {
 
@@ -11,6 +12,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
+  const { setUser } = useContext(AuthContext);
 
   const API_URL = "http://localhost:5000/user";
 
@@ -27,8 +29,17 @@ const Login = () => {
           user.password === password
       );
       if (user) {
+
+        setUser(user);
+
+        localStorage.setItem(
+          "user",
+          JSON.stringify(user)
+        );
+
         alert("Login Successfull");
-        navigate("/shop")
+
+        navigate("/")
       }
       else {
         alert("Invalid email or password");

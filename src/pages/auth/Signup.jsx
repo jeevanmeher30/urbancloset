@@ -17,7 +17,7 @@ const Signup = () => {
   const nameRegex = /^[A-Za-z ]+$/;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
   const phoneRegex = /^[0-9]{10}$/;
-  const passwordRegex = /^[A-Za-z0-9]{8,}$/;
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   const addressRegex = /^[a-zA-Z0-9\s.,]{10,}$/
 
   const navigate = useNavigate();

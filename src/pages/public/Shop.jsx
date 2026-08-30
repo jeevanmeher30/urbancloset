@@ -1,8 +1,14 @@
 import React from 'react';
-import { useEffect,useState } from 'react';
+import { useEffect,useState , useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../Context/CartContext';
+
 const Shop = () => {
+
+  const { addToCart} = useContext(CartContext);
+
+  // console.log(cart)
 
   const[products,setProducts] = useState([]);
   
@@ -45,7 +51,8 @@ const Shop = () => {
               ₹{product.price}
               </p>
 
-            <button className='add-cart-btn'>
+            <button  className='add-cart-btn'
+            onClick={() => addToCart(product)}>
               Add to Cart
             </button>
 

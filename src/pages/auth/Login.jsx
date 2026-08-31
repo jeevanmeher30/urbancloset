@@ -111,7 +111,7 @@ const Login = () => {
               <Link to="/signup"> Sign up</Link>
               <br />
               Are you admin?
-              <Link to="/admin"> Admin</Link>
+              <Link to="/admin/login"> Admin</Link>
             </p>
           </div>
         </div>

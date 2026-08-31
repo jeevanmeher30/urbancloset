@@ -39,7 +39,6 @@ const Nav = () => {
           </>
         )}
         
-        <Link to="/admin/login">Admin </Link>
         <Link to="/cart">🛒</Link>
       </div>
 

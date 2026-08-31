@@ -178,7 +178,7 @@ const Signup = () => {
               <Link to="/login"> Login </Link>
               <br />
               Are you admin?
-              <Link to="/admin"> Admin</Link>
+              <Link to="/admin/login"> Admin</Link>
             </p>
             
           </div>

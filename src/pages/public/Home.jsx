@@ -125,7 +125,6 @@ const Home = () => {
         </button>
 
       </div>
-
       <section className="home-categories">
 
         <h2>Shop by Category</h2>

@@ -22,7 +22,7 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  const API_URL = "http://localhost:5000/user";
+  const API_URL = "https://urbancloset-api.onrender.com/user";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -120,7 +120,7 @@ const Signup = () => {
             <h1 className='auth-title'>Create Account</h1>
 
             <form onSubmit={handleSubmit}>
-              <div className='input-group'>
+              <div className='auth-input-group'>
                 <input type="text"
                   placeholder='Name'
                   value={name} onChange={(e) => setName(e.target.value)} />

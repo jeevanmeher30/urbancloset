@@ -14,7 +14,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(AuthContext);
 
-  const API_URL = "http://localhost:5000/user";
+  const API_URL = "https://urbancloset-api.onrender.com/user";
 
 
   const handleSubmit = async (e) => {
@@ -74,7 +74,7 @@ const Login = () => {
 
             <form onSubmit={handleSubmit}>
 
-              <div className='input-group'>
+              <div className='auth-input-group'>
                 <input type="email"
                   placeholder='Email'
                   value={email}
@@ -82,7 +82,7 @@ const Login = () => {
                 />
               </div>
 
-              <div className='input-group'>
+              <div className='auth-input-group'>
 
                 <div className='password-input'>
 

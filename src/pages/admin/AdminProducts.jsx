@@ -7,7 +7,7 @@ const AdminProducts = () => {
 
     const [products,setProducts] = useState([]);
 
-    const API_URL = "http://localhost:5000/products"
+    const API_URL = "https://urbancloset-api.onrender.com/products"
 
     const getProducts = async() => {
         try {

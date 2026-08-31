@@ -14,7 +14,7 @@ const Shop = () => {
 
   const [search, setSearch] = useState("");
 
-  const API_URL = "http://localhost:5000/products"
+  const API_URL = "https://urbancloset-api.onrender.com/products"
 
   useEffect(() => {
     const fetchproducts = async () => {

@@ -8,7 +8,7 @@ const EditProduct = () => {
     const {id} = useParams();
     const navigate = useNavigate();
 
-    const API_URL = "http://localhost:5000/products";
+    const API_URL = "https://urbancloset-api.onrender.com/products";
 
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");

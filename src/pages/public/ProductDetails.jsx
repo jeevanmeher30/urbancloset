@@ -20,9 +20,9 @@ const ProductDetails = () => {
     const [selectedSize, setSelectedSize] = useState("");
     const [addedMessage, setAddedMessage] = useState(false);
 
-    // const API_URL = "https://urbancloset-api.onrender.com/products";
+    const API_URL = "https://urbancloset-api.onrender.com/products";
 
-    const API_URL = "http://localhost:5000/products";
+    // const API_URL = "http://localhost:5000/products";
 
 
     useEffect(() =>{

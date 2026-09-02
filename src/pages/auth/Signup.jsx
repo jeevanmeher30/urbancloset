@@ -153,7 +153,7 @@ const Signup = () => {
                     className='eye-button'
                     onClick={() => setShowPassword(!showPassword)}>
 
-                    {showPassword ? "◉" : "◌"}
+                    {showPassword ? "◉" : "◎"}
                   </button>
                 </div>
 
@@ -167,7 +167,7 @@ const Signup = () => {
                     type="button"
                     className='eye-button'
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-                    {showConfirmPassword ? "◉" : "◌"}
+                    {showConfirmPassword ? "◉" : "◎"}
                   </button>
                 </div>
               </div>

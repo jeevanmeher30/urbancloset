@@ -17,12 +17,14 @@ import { createContext, useState, useEffect } from 'react'
     const addToCart = (product) =>{
 
       const existingProduct = cart.find(
-        (item) => item.id === product.id
+        (item) => item.id === product.id &&
+        item.selectedSize === product.selectedSize
       );
       if(existingProduct) {
         setCart(
           cart.map((item) => 
-          item.id === product.id
+          item.id === product.id && 
+          item.selectedSize === product.selectedSize
           ? { ...item, quantity: item.quantity + 1}
           :item
           )
@@ -35,20 +37,23 @@ import { createContext, useState, useEffect } from 'react'
       }
     };
 
-    const increaseQuantity = (id) => {
+    const increaseQuantity = (id, selectedSize) => {
         setCart(
           cart.map((item) => 
-            item.id === id 
+            item.id === id &&
+            item.selectedSize === selectedSize
               ? { ...item, quantity: item.quantity + 1}
               :item
           )
         );
       };
 
-    const decreaseQuantity = (id) => {
+    const decreaseQuantity = (id, selectedSize) => {
         setCart(
           cart.map((item) => 
-            item.id === id && item.quantity > 1
+            item.id === id && 
+            item.selectedSize === selectedSize &&
+            item.quantity > 1
               ? { ...item, quantity: item.quantity - 1}
               :item
           )

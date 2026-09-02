@@ -55,6 +55,7 @@
       "name": "Classic White T-Shirt",
       "category": "Men",
       "price": "899",
+      "sizes": ["S", "M", "L", "XL"],
       "image": "/products/white-tshirt.jpg",
       "description": "A clean and comfortable classic white t-shirt."
     },
@@ -63,6 +64,7 @@
       "name": "Oversized Black Hoodie",
       "category": "Men",
       "price": 1499,
+      "sizes": ["S", "M", "L", "XL"],
       "image": "/products/black-hoodie.jpg",
       "description": "A relaxed oversized hoodie for everyday wear."
     },
@@ -71,6 +73,7 @@
       "name": "Beige Casual Dress",
       "category": "Women",
       "price": 1299,
+      "sizes": ["S", "M", "L", "XL"],
       "image": "/products/beige-dress.jpg",
       "description": "A simple and elegant casual dress."
     },
@@ -79,6 +82,7 @@
       "name": "Blue Denim Jacket",
       "category": "Unisex",
       "price": 1899,
+      "sizes": ["S", "M", "L", "XL"],
       "image": "/products/denim-jacket.jpg",
       "description": "A versatile denim jacket for everyday outfits."
     },
@@ -86,6 +90,7 @@
       "name": "Black t-shirt ",
       "price": "699",
       "category": "Unisex",
+      "sizes": ["S", "M", "L", "XL"],
       "image": "/products/black-tshirt.jpg",
       "id": "TKpBQxG_o2k"
     }

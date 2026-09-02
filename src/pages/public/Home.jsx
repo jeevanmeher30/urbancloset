@@ -1,130 +1,108 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+
+const slides = [
+  {
+    image:
+      "https://images.unsplash.com/photo-1445205170230-053b83016050",
+    title: "New Collection",
+    text: "Discover your next favorite style.",
+    button: "Shop Now",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d",
+    title: "Style Your Way",
+    text: "Fashion made for every moment.",
+    button: "Explore Now",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b",
+    title: "Urban Styles",
+    text: "Find the look that defines you.",
+    button: "Shop Now",
+  },
+];
 
 const Home = () => {
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => 
+    prev === slides.length - 1 ? 0 : prev + 1 
+  );
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev)=> 
+    prev === 0 ? slides.length - 1 : prev - 1
+  );
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  
   return (
+
     <div className="home">
+      <section className="hero-carousel">
 
-      <div
-        id="urbanClosetCarousel"
-        className="carousel slide"
-        data-bs-ride="carousel"
-      >
+        <img 
+        src={slides[currentSlide].image} 
+        alt={slides[currentSlide].title}
+        className="hero-image"
+        />
 
-        {/* Indicators */}
-        <div className="carousel-indicators">
+        <div className="hero-overlay"></div>
 
-          <button
-            type="button"
-            data-bs-target="#urbanClosetCarousel"
-            data-bs-slide-to="0"
-            className="active"
-          ></button>
+        <div className="hero-content">
+          <span className="hero-label">
+            URBANCLOSET
+          </span>
+          <h1>{slides[currentSlide].title}</h1>
 
-          <button
-            type="button"
-            data-bs-target="#urbanClosetCarousel"
-            data-bs-slide-to="1"
-          ></button>
+          <p>{slides[currentSlide].text}</p>
 
-          <button
-            type="button"
-            data-bs-target="#urbanClosetCarousel"
-            data-bs-slide-to="2"
-          ></button>
-
+          <Link to = "/shop" className="hero-btn">
+          {slides[currentSlide].button}
+          </Link>
         </div>
 
+        <button
+        className="hero-arrow hero-arrow-left"
+        onClick={prevSlide}>
+           ←
+        </button>
 
-        {/* Slides */}
-        <div className="carousel-inner">
+        <button
+        className="hero-arrow hero-arrow-right"
+        onClick={nextSlide}>
+           →
+        </button>
 
-          {/* Slide 1 */}
-          <div className="carousel-item active">
-            <img
-              src="https://images.unsplash.com/photo-1445205170230-053b83016050"
-              className="d-block w-100 "
-              alt="Fashion collection"
-            />
-
-            <div className="carousel-caption">
-              <h1>New Collection</h1>
-              <p>Discover your next favorite style.</p>
-
-              <Link to="/shop">
-                <button className="hero-btn">
-                  Shop Now
-                </button>
-              </Link>
-            </div>
-          </div>
-
-
-          {/* Slide 2 */}
-          <div className="carousel-item">
-            <img
-              src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d"
-              className="d-block w-100"
-              alt="Fashion"
-            />
-
-            <div className="carousel-caption">
-              <h1>Style Your Way</h1>
-              <p>Fashion made for every moment.</p>
-
-              <Link to="/shop">
-                <button className="hero-btn">
-                  Explore Now
-                </button>
-              </Link>
-            </div>
-          </div>
-
-
-          {/* Slide 3 */}
-          <div className="carousel-item">
-            <img
-              src="https://images.unsplash.com/photo-1483985988355-763728e1935b"
-              className="d-block w-100"
-              alt="Shopping"
-            />
-
-            <div className="carousel-caption">
-              <h1>Urban Styles</h1>
-              <p>Find the look that defines you.</p>
-
-              <Link to="/shop">
-                <button className="hero-btn">
-                  Shop Now
-                </button>
-              </Link>
-            </div>
-          </div>
-
+        <div className="hero-indicators">
+          {slides.map((_, index) => (
+            <button 
+            key = {index}
+            className={
+              currentSlide === index
+              ? "hero-dot active"
+              :"hero-dot"
+            }
+            onClick={() => setCurrentSlide(index)}>
+            </button>
+          ))}
         </div>
 
-
-        {/* Previous Button */}
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#urbanClosetCarousel"
-          data-bs-slide="prev"
-        >
-          <span className="carousel-control-prev-icon"></span>
-        </button>
-
-
-        {/* Next Button */}
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#urbanClosetCarousel"
-          data-bs-slide="next"
-        >
-          <span className="carousel-control-next-icon"></span>
-        </button>
-
-      </div>
+      </section>
       <section className="home-categories">
 
         <h2>Shop by Category</h2>

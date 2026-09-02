@@ -1,11 +1,17 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import { Link } from 'react-router-dom';
-import "../index.css"
+import "../index.css";
+import { CartContext } from '../Context/CartContext';
 
 const Nav = () => {
 
   const { user, setUser } = useContext(AuthContext);
+  const { cart } = useContext(CartContext);
+  const totalItems = cart.reduce(
+  (total, item) => total + item.quantity,
+  0
+  );
   const handleLogout = () => {
     setUser(null);
     localStorage.removeItem("user");
@@ -39,7 +45,14 @@ const Nav = () => {
           </>
         )}
         
-        <Link to="/cart">🛒</Link>
+        <Link to="/cart" className='cart-icon'>
+        🛒
+        {totalItems > 0 && (
+          <span className='cart-count'>
+            {totalItems}
+          </span>
+        )}
+        </Link>
       </div>
 
     </nav>

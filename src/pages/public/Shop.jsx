@@ -14,6 +14,10 @@ const Shop = () => {
 
   const [search, setSearch] = useState("");
 
+  const [addedProductId, setAddedProductId] = useState(null);
+
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
   const API_URL = "https://urbancloset-api.onrender.com/products"
 
   useEffect(() => {
@@ -31,7 +35,9 @@ const Shop = () => {
 
 
   const filteredProducts = products.filter((product) =>
-  product.name.toLowerCase().includes(search.toLowerCase())
+  product.name.toLowerCase().includes(search.toLowerCase()) &&
+  (selectedCategory === "All" || 
+    product.category === selectedCategory)
 );
 
   return (
@@ -45,11 +51,39 @@ const Shop = () => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
+      <div className='category-filters'>
+
+        <button 
+        className={selectedCategory === "All" ? "active-category" : "" }
+        onClick={() => setSelectedCategory("All")}>
+           All 
+         </button>
+
+        <button
+         className={selectedCategory === "Men" ? "active-category" : "" }
+        onClick={() => setSelectedCategory("Men")}>
+           Men
+            </button>
+
+        <button 
+        className={selectedCategory === "Women" ? "active-category" : "" }
+        onClick={() => setSelectedCategory("Women")}>
+           Women
+            </button>
+
+        <button className={selectedCategory === "Unisex" ? "active-category" : "" }
+        onClick={() => setSelectedCategory("Unisex")}>
+           Unisex 
+           </button>
+
+      </div>
+      <br />
+      
 
 
       <div className='product-grid'>
         {filteredProducts.map((product) => (
-          <div className='product-card' key={products.id}>
+          <div className='product-card' key={product.id}>
             <Link to={`/product/${product.id}`}>
               <div className='product-image'>
                 <img src={product.image}
@@ -59,7 +93,7 @@ const Shop = () => {
 
             <div className='product-info'>
               <p className='product-category'>
-                {products.category}
+                {product.category}
               </p>
               <h2>{product.name}</h2>
 
@@ -68,9 +102,23 @@ const Shop = () => {
               </p>
 
               <button className='add-cart-btn'
-                onClick={() => addToCart(product)}>
+                onClick={() => {
+                  addToCart(product);
+
+                  setAddedProductId(product.id);
+
+                  setTimeout(() => {
+                    setAddedProductId(null);
+                  }, 2500);
+                }} >
                 Add to Cart
               </button>
+
+              {addedProductId === product.id && (
+                <div className="added-message">
+                  ✓ Added to cart
+                </div>
+              )}
 
             </div>
 

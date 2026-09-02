@@ -13,6 +13,8 @@ nav{
     padding: 20px 50px;
     border-bottom: 1px solid #ddd;
     background-color: black;
+    position:relative;
+    z-index: 100;
 }
 
 .nav-links{
@@ -57,6 +59,34 @@ nav a:hover{
 .logo{
     font-size: 24px;
     font-weight: lighter;
+}
+.cart-icon {
+  position: relative;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+
+  min-width: 17px;
+  height: 17px;
+
+  padding: 0 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #e63946;
+  color: white;
+
+  border-radius: 50%;
+
+  font-size: 10px;
+  font-weight: bold;
 }
 
 .auth-page{
@@ -342,23 +372,114 @@ nav a:hover{
     color: #555;
     margin-bottom: 30px;
 }
+.added-message {
+  margin-top: 15px;
 
-.details-info button{
+  color: #1f7a3d;
+  font-size: 14px;
+  font-weight: 500;
 
-    width: 100%;
-    padding: 15px;
-    background: #111;
-    color: white;
-    border:none;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
+  animation: fadeIn 0.3s ease;
 }
 
-.details-info button:hover{
-    background: #333;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+.remove-product-btn {
+  width: 50%;
+  margin-top: 12px;
+  padding: 13px;
+
+  background: transparent;
+  color: #c62828;
+
+  border: 1px solid #c62828;
+
+  font-size: 15px;
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.remove-product-btn:hover {
+  background: #c62828;
+  color: white;
+}
+
+/* Size Section */
+
+.size-section {
+  margin: 25px 0;
+}
+
+.size-section h3 {
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.size-options {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.size-btn {
+  width: 52px;
+  height: 42px;
+
+  padding: 0;
+
+  background: transparent;
+  color: #222;
+
+  border: 1px solid #cfcfcf;
+
+  cursor: pointer;
+  font-size: 14px;
+
+  transition: 0.2s ease;
+}
+
+.size-btn:hover {
+  border-color: #111;
+}
+
+.size-btn.selected {
+  background: #111;
+  color: white;
+  border-color: #111;
+}
+
+
+/* Add to Cart */
+
+.add-to-cart-btn {
+  width: 100%;
+  padding: 15px;
+
+  background: #111;
+  color: white;
+
+  border: none;
+  cursor: pointer;
+
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  background: #333;
+}
 
 /* CART PAGE */
 
@@ -435,6 +556,12 @@ nav a:hover{
     gap: 15px;
     margin-top: 15px;
 }
+.cart-item-size {
+  font-size: 14px;
+  color: #555;
+  margin: 6px 0;
+}
+
 
 .remove-btn{
     margin-top: 10px !important;
@@ -1047,18 +1174,278 @@ nav a:hover{
 ========================= */
 
 .product-search {
-    width: 100%;
-    max-width: 400px;
+    display: block;
+    width: min(500px, 90%);
+    margin: 25px auto 20px;
 
-    padding: 12px 18px;
-    margin-bottom: 30px;
-
-    border: 1px solid #ccc;
+    padding: 14px 18px;
+    
+    border: 1px solid #ddd;
     outline: none;
 
     font-size: 15px;
+
+    transition: 0.3s ease;
 }
 
 .product-search:focus {
     border-color: #111;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+
+/* CATEGORY--FITERS */
+
+.category-filters{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 40px;
+}
+
+.category-filters button{
+    background: transparent;
+    padding: 10px 20px;
+
+    font-size: 14px;
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.category-filters button:hover {
+  border-color: #111;
+  background: #f5f5f5;
+}
+
+.category-filters button.active-category {
+  background: #111;
+  color: white;
+  border-color: #111;
+}
+
+
+/* =========================
+   CUSTOM HERO CAROUSEL
+========================= */
+
+.hero-carousel {
+  position: relative;
+  height: 90vh;
+  min-height: 550px;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  animation: heroZoom 5s ease-in-out;
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08);
+  }
+}
+
+
+/* Dark overlay */
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.05)
+  );
+}
+
+
+/* Hero text */
+
+.hero-content {
+  position: absolute;
+
+  top: 50%;
+  left: 10%;
+
+  transform: translateY(-50%);
+
+  color: white;
+
+  max-width: 500px;
+  z-index: 2;
+}
+
+.hero-label {
+  font-size: 12px;
+  letter-spacing: 4px;
+  font-weight: 600;
+}
+
+.hero-content h1 {
+  font-size: clamp(45px, 6vw, 90px);
+  margin: 15px 0;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* Button */
+
+.hero-btn {
+  display: inline-block;
+
+  padding: 14px 30px;
+
+  background: white;
+  color: black;
+
+  text-decoration: none;
+  font-weight: 600;
+
+  transition: 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: black;
+  color: white;
+}
+
+
+/* Navigation arrows */
+
+.hero-arrow {
+  position: absolute;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 50px;
+  height: 50px;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  background: rgba(0, 0, 0, 0.2);
+
+  color: white;
+
+  font-size: 25px;
+
+  cursor: pointer;
+
+  z-index: 3;
+
+  transition: 0.3s;
+}
+
+.hero-arrow:hover {
+  background: white;
+  color: black;
+}
+
+.hero-arrow-left {
+  left: 25px;
+}
+
+.hero-arrow-right {
+  right: 25px;
+}
+
+
+/* Indicators */
+
+.hero-indicators {
+  position: absolute;
+
+  bottom: 30px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 10px;
+
+  z-index: 3;
+}
+
+.hero-dot {
+  width: 35px;
+  height: 3px;
+
+  border: none;
+
+  background: rgba(255, 255, 255, 0.5);
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.hero-dot.active {
+  background: white;
+  width: 55px;
+}
+
+
+.size-section{
+    margin: 25px 0;
+}
+
+.size-section h3{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.size-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.size-btn{
+    width: 55px;
+    height: 45px;
+
+    background: transparent;
+    color: #222;
+
+    border: 1px solid #bdbdbd;
+    font-size: 14px;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.size-btn:hover {
+  border-color: #222;
+}
+
+.size-btn.selected {
+  background: #181818;
+  color: white;
+  border-color: #181818;
 }

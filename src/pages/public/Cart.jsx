@@ -62,6 +62,9 @@ const Cart = () => {
               />
               <div>
                 <h2>{product.name}</h2>
+                <p className="cart-item-size">
+                    Size: {product.selectedSize}
+                </p>
                 <p>{product.category}</p>
                 <p>₹{product.price}</p>
                 <div className='cart-actions'>

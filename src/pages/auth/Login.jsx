@@ -97,7 +97,7 @@ const Login = () => {
                     className='eye-button'
                     onClick={() => setShowPassword(!showPassword)}>
 
-                    {showPassword ? "◉" : "◌"}
+                    {showPassword ? "◉" : "◎"}
                   </button>
                 </div>
               </div>

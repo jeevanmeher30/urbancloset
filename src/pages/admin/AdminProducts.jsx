@@ -38,6 +38,9 @@ const AdminProducts = () => {
 
   return (
     <div className='admin-products'>
+          <Link to="/admin/dashboard" className="back-dashboard-btn">
+              ← Back to Dashboard
+          </Link>
 
       <h1>Manage Products</h1>
 

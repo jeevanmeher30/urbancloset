@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import {Link} from 'react-router-dom';
 
 
 const AddProduct = () => {
@@ -39,6 +40,10 @@ const AddProduct = () => {
     
   return (
     <div className='admin-form-page'>
+
+          <Link to="/admin/dashboard" className="back-dashboard-btn">
+              ← Back to Dashboard
+          </Link>
 
       <h1>Add Product</h1>
 

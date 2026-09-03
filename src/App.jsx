@@ -12,6 +12,7 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminProducts from './pages/admin/AdminProducts';
 import EditProduct from './pages/admin/EditProduct';
 import AddProduct from './pages/admin/AddProduct';
+import AdminUsers from './pages/admin/AdminUsers';
 
 
 
@@ -36,6 +37,7 @@ import AddProduct from './pages/admin/AddProduct';
         <Route path="/admin/products" element ={<AdminProducts/>} />
         <Route path="/admin/edit-product/:id" element={<EditProduct />} />
         <Route path="/admin/add-product" element={<AddProduct />} />
+        <Route path="/admin/users" element={<AdminUsers />} />
 
 
         <Route path= "/shop" element = {<Shop />} />

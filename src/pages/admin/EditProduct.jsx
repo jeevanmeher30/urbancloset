@@ -60,6 +60,10 @@ const EditProduct = () => {
   return (
     <div className='admin-form-page'>
 
+          <Link to="/admin/dashboard" className="back-dashboard-btn">
+              ← Back to Dashboard
+          </Link>
+
         <h1>Edit Product</h1>  
 
         <form className='admin-form' onSubmit={handleUpdate}>

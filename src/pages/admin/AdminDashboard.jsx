@@ -38,6 +38,11 @@ const AdminDashboard = () => {
             <p>Add new products to your store</p>
         </Link>
 
+        <Link to="/admin/users" className='admin-card'>
+            <h2>👥 Users</h2>
+            <p>View and manage registered users</p>
+        </Link> 
+
       </div>
 
     </div>

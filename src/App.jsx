@@ -13,6 +13,7 @@ import AdminProducts from './pages/admin/AdminProducts';
 import EditProduct from './pages/admin/EditProduct';
 import AddProduct from './pages/admin/AddProduct';
 import AdminUsers from './pages/admin/AdminUsers';
+import OrderSuccess from './pages/public/OrderSuccess';
 
 
 
@@ -43,6 +44,7 @@ import AdminUsers from './pages/admin/AdminUsers';
         <Route path= "/shop" element = {<Shop />} />
         <Route path="/product/:id" element = {<ProductDetails />} />
         <Route path="/cart" element = {<Cart/>} />
+        <Route path="/order-success" element={<OrderSuccess />} />
         
       </Routes>
     </>

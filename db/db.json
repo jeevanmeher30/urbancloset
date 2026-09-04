@@ -49,52 +49,82 @@
       "id": "pehDCbttlXY"
     }
   ],
-  "products": [
-    {
-      "id": "1",
-      "name": "Classic White T-Shirt",
-      "category": "Men",
-      "price": "899",
-      "sizes": ["S", "M", "L", "XL"],
-      "image": "/products/white-tshirt.jpg",
-      "description": "A clean and comfortable classic white t-shirt."
-    },
-    {
-      "id": "2",
-      "name": "Oversized Black Hoodie",
-      "category": "Men",
-      "price": 1499,
-      "sizes": ["S", "M", "L", "XL"],
-      "image": "/products/black-hoodie.jpg",
-      "description": "A relaxed oversized hoodie for everyday wear."
-    },
-    {
-      "id": "3",
-      "name": "Beige Casual Dress",
-      "category": "Women",
-      "price": 1299,
-      "sizes": ["S", "M", "L", "XL"],
-      "image": "/products/beige-dress.jpg",
-      "description": "A simple and elegant casual dress."
-    },
-    {
-      "id": "4",
-      "name": "Blue Denim Jacket",
-      "category": "Unisex",
-      "price": 1899,
-      "sizes": ["S", "M", "L", "XL"],
-      "image": "/products/denim-jacket.jpg",
-      "description": "A versatile denim jacket for everyday outfits."
-    },
-    {
-      "name": "Black t-shirt ",
-      "price": "699",
-      "category": "Unisex",
-      "sizes": ["S", "M", "L", "XL"],
-      "image": "/products/black-tshirt.jpg",
-      "id": "TKpBQxG_o2k"
-    }
+  "products": [ 
+  {
+  "id": "1",
+  "name": "Classic White T-Shirt",
+  "category": "Men",
+  "price": "899",
+  "sizes": ["S", "M", "L", "XL"],
+  "fabric": "100% Cotton",
+  "fabricBenefits": [
+    "Breathable",
+    "Soft on skin",
+    "Comfortable for everyday wear"
   ],
+  "image": "/products/white-tshirt.jpg",
+  "description": "A clean and comfortable classic white t-shirt."
+},
+{
+  "id": "2",
+  "name": "Oversized Black Hoodie",
+  "category": "Men",
+  "price": 1499,
+  "sizes": ["S", "M", "L", "XL"],
+  "fabric": "80% Cotton, 20% Polyester",
+   "fabricBenefits": [
+    "Soft and comfortable",
+    "Durable",
+    "Helps retain warmth"
+  ],
+  "image": "/products/black-hoodie.jpg",
+  "description": "A relaxed oversized hoodie for everyday wear."
+},
+{
+  "id": "3",
+  "name": "Beige Casual Dress",
+  "category": "Women",
+  "price": 1299,
+  "sizes": ["S", "M", "L", "XL"],
+  "fabric": "95% Cotton, 5% Elastane",
+  "fabricBenefits": [
+    "Soft and breathable",
+    "Slightly stretchy",
+    "Comfortable fit"
+  ],
+  "image": "/products/beige-dress.jpg",
+  "description": "A simple and elegant casual dress."
+},
+{
+  "id": "4",
+  "name": "Blue Denim Jacket",
+  "category": "Unisex",
+  "price": 1899,
+  "sizes": ["S", "M", "L", "XL"],
+  "fabric": "100% Denim Cotton",
+  "fabricBenefits": [
+    "Strong and durable",
+    "Long-lasting",
+    "Classic structured feel"
+  ],
+  "image": "/products/denim-jacket.jpg",
+  "description": "A versatile denim jacket for everyday outfits."
+},
+{
+  "name": "Black T-Shirt",
+  "price": "699",
+  "category": "Unisex",
+  "sizes": ["S", "M", "L", "XL"],
+  "fabric": "100% Cotton",
+  "fabricBenefits": [
+    "Breathable",
+    "Soft on skin",
+    "Easy to wear daily"
+  ],
+  "image": "/products/black-tshirt.jpg",
+  "id": "TKpBQxG_o2k"
+}
+],
   "orders": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

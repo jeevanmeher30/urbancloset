@@ -23,8 +23,8 @@ const Cart = () => {
 
       navigate("/login")
     } else {
-      alert("Order placed successfully");
       clearCart();
+      navigate("/order-success");
     }
   };
 
@@ -32,6 +32,11 @@ const Cart = () => {
   const total = cart.reduce((sum, product) => {
     return sum + product.price * product.quantity;
   }, 0);
+
+  const totalItems = cart.reduce((sum, product) => {
+  return sum + product.quantity;
+}, 0);
+
   console.log(cart)
   return (
     <div className='cart-page'>
@@ -69,7 +74,7 @@ const Cart = () => {
                 <p>₹{product.price}</p>
                 <div className='cart-actions'>
                   <div className="quantity-controls">
-                    <button onClick={() => decreaseQuantity(product.id)}>
+                    <button onClick={() => decreaseQuantity(product.id,product.selectedSize)}>
                       -
                     </button>
 
@@ -77,12 +82,12 @@ const Cart = () => {
                       {product.quantity}
                     </span>
 
-                    <button onClick={() => increaseQuantity(product.id)}>
+                    <button onClick={() => increaseQuantity(product.id,product.selectedSize)}>
                       +
                     </button>
 
                   </div>
-                  <button className='remove-btn' onClick={() => removeFromCart(product.id)}>
+                  <button className='remove-btn' onClick={() => removeFromCart(product.id,product.selectedSize)}>
                     Remove
                   </button>
                 </div>
@@ -96,16 +101,29 @@ const Cart = () => {
         </div>
       )}
       {cart.length > 0 && (
-        <>
-        <h2 className='cart-total'>
-        Total: ₹{total}
-      </h2>
+        <div className='order-summary'>
+          <h2>
+            Order Summary
+          </h2>
 
-      <button className='checkout-btn'
-        onClick={handleCheckout}>
-        Checkout
-      </button>
-      </>
+          <div className='summary-row'>
+            <span>Items ({totalItems})</span>
+            <span> ₹{total} </span>
+          </div>
+          <div className='summary-row'>
+          <span>Shipping</span>
+          <span>FREE</span>
+          </div>
+          <hr />
+          <div className='summary-total'>
+            <span>Total</span>
+            <span> ₹{total} </span>
+          </div>
+          <button className='checkout-btn'
+          onClick={handleCheckout}>
+          Proceed to Checkout
+          </button>
+        </div>
       )}
     </div>
   );

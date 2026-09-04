@@ -76,6 +76,20 @@ const ProductDetails = () => {
                 {product.description}
             </p>
 
+              <div className="fabric-info">
+                <h3>Fabric & Material</h3>
+                <p className='fabric-name'>
+                    {product.fabric}
+                </p>
+                  <ul className="fabric-benefits">
+                      {product.fabricBenefits?.map((benefit, index) => (
+                          <li key={index}>
+                              {benefit}
+                          </li>
+                      ))}
+                  </ul>
+              </div>
+
             <div className='size-selection'>
                 <h5>Select Size</h5>
 
